@@ -1,0 +1,40 @@
+{
+  "name": "node-portmapping",
+  "version": "0.1.0",
+  "description": "NAT port mapping for Node.js based on libplum",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "install": "cmake-js compile",
+    "clean": "cmake-js clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paullouisageneau/node-portmapping.git"
+  },
+  "keywords": [
+    "libplum",
+    "nat",
+    "port-mapping",
+    "peer-to-peer",
+    "pcp",
+    "nat-pmp",
+    "upnp"
+  ],
+  "contributors": [
+    {
+      "name": "Paul-Louis Ageneau",
+      "url": "https://paul-louis.ageneau.org/"
+    }
+  ],
+  "license": "LGPL-2.0-or-later",
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/paullouisageneau/node-portmapping/issues"
+  },
+  "homepage": "https://github.com/paullouisageneau/node-portmapping#readme",
+  "devDependencies": {
+    "cmake-js": "^6.2.1",
+    "node-addon-api": "^4.2.0"
+  }
+}
