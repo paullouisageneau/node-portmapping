@@ -1,7 +1,7 @@
 {
   "name": "node-portmapping",
-  "version": "0.1.1",
-  "description": "NAT port mapping for Node.js based on libplum",
+  "version": "0.1.2",
+  "description": "Multi-protocol NAT Port Mapping for Node.js based on libplum",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
