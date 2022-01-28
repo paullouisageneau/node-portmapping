@@ -3,7 +3,7 @@ project(node_portmapping VERSION 0.1.1)
 
 include_directories(${CMAKE_JS_INC})
 
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 
 include(FetchContent)
 
@@ -14,12 +14,12 @@ FetchContent_Declare(
 )
 
 FetchContent_GetProperties(libplum)
-if(NOT libplum)
+if(NOT libplum_POPULATED)
     FetchContent_Populate(libplum)
     add_subdirectory(${libplum_SOURCE_DIR} ${libplum_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
-add_library(node_portmapping SHARED
+add_library(${PROJECT_NAME} SHARED
     src/wrapper.cpp
     src/mapping.cpp
     src/callback.cpp
@@ -27,21 +27,25 @@ add_library(node_portmapping SHARED
     ${CMAKE_JS_SRC}
 )
 
-set_target_properties(node_portmapping PROPERTIES CXX_STANDARD 17)
-set_target_properties(node_portmapping PROPERTIES PREFIX "" SUFFIX ".node")
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17)
+set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 
-target_include_directories(node_portmapping PRIVATE
-    ${CMAKE_SOURCE_DIR}/node_modules/node-addon-api
-    ${CMAKE_BINARY_DIR}/_deps/libplum-src/include
-)
-
-target_link_libraries(node_portmapping PRIVATE
-    plum-static
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    LibPlum::LibPlumStatic
     ${CMAKE_JS_LIB}
 )
 
+# Include node-addon-api wrappers
+execute_process(COMMAND node -p "require('node-addon-api').include"
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        OUTPUT_VARIABLE NODE_ADDON_API_DIR
+        )
+string(REPLACE "\n" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
+string(REPLACE "\"" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${NODE_ADDON_API_DIR})
+
 if(UNIX AND NOT APPLE)
-    target_link_libraries(node_portmapping PRIVATE
+    target_link_libraries(${PROJECT_NAME} PRIVATE
         -static-libgcc
         -static-libstdc++
     )
