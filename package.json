@@ -27,7 +27,7 @@
       "url": "https://paul-louis.ageneau.org/"
     }
   ],
-  "license": "LGPL-2.0-or-later",
+  "license": "LGPL-2.1-or-later",
   "gypfile": true,
   "bugs": {
     "url": "https://github.com/paullouisageneau/node-portmapping/issues"
