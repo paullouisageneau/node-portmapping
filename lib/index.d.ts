@@ -4,7 +4,6 @@ export type LogLevel = 'Verbose'|'Debug'|'Info'|'Warning'|'Error'|'Fatal';
 
 export interface Config {
     logLevel?: LogLevel;
-    dummyTlsDomain?: string;
 }
 
 export function init(config?: Config): void;
@@ -38,7 +37,3 @@ export function createMapping(spec: MappingSpec|number, callback?: MappingCallba
 
 export function getLocalAddress(): string;
 
-export type CertType = 'Cert'|'Chain'|'FullChain'|'PrivKey';
-
-export function getDummyTlsCertificate(certType: CertType): string;
-export function getDummyTlsHost(address: string): string;

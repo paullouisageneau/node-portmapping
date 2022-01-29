@@ -18,9 +18,6 @@ public:
     static Napi::Value createMapping(const Napi::CallbackInfo &info);
 
     static Napi::Value getLocalAddress(const Napi::CallbackInfo &info);
-
-    static Napi::Value getDummyTlsCertificate(const Napi::CallbackInfo &info);
-    static Napi::Value getDummyTlsHost(const Napi::CallbackInfo &info);
 };
 
 #endif // WRAPPER_H
