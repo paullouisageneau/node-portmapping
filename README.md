@@ -1,5 +1,7 @@
 # Multi-protocol NAT Port Mapping for Node.js
 
+[![NPM package](https://img.shields.io/npm/v/node-portmapping?color=green)](https://www.npmjs.com/package/node-portmapping)
+
 node-portmapping allows to forward ports on Network Address Translators (NAT). It implements the protocols PCP, NAT-PMP, and UPnP, and automatically detects which one to use.
 
 This project consists in Node.js bindings for [libplum](https://github.com/paullouisageneau/libplum), which is licensed under LGPLv2.
