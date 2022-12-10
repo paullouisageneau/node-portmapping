@@ -10,7 +10,7 @@ include(FetchContent)
 FetchContent_Declare(
     libplum
     GIT_REPOSITORY https://github.com/paullouisageneau/libplum.git
-    GIT_TAG "v0.1.3"
+    GIT_TAG "v0.2.0"
 )
 
 FetchContent_GetProperties(libplum)

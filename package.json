@@ -1,6 +1,6 @@
 {
   "name": "node-portmapping",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Multi-protocol NAT Port Mapping for Node.js based on libplum",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -27,7 +27,7 @@
       "url": "https://paul-louis.ageneau.org/"
     }
   ],
-  "license": "LGPL-2.1-or-later",
+  "license": "MPL-2.0",
   "gypfile": true,
   "bugs": {
     "url": "https://github.com/paullouisageneau/node-portmapping/issues"
