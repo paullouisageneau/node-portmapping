@@ -1,5 +1,7 @@
 #include "callback.hpp"
 
+#include <stdexcept>
+
 const char *Callback::CancelException::what() const throw() { return "Callback cancelled"; }
 
 Callback::Callback(Napi::Function callback) {
