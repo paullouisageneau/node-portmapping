@@ -30,13 +30,11 @@ private:
     struct Data {
         arg_func_t argFunc;
     };
+    using Context = std::nullptr_t;
 
-    static void Func(Napi::Env env, Napi::Function callback, Napi::Reference<Napi::Value> *context,
-                     Data *data);
+    static void Func(Napi::Env env, Napi::Function callback, Context *context, Data *data);
 
-    using tsfn_t = Napi::TypedThreadSafeFunction<Napi::Reference<Napi::Value>, Data, Func>;
-
-    Napi::Reference<Napi::Value> receiver;
+    using tsfn_t = Napi::TypedThreadSafeFunction<Context, Data, Func>;
     tsfn_t tsfn;
 };
 
