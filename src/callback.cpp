@@ -5,13 +5,12 @@
 const char *Callback::CancelException::what() const throw() { return "Callback cancelled"; }
 
 Callback::Callback(Napi::Function callback) {
-    if (!callback.IsFunction())
-        throw Napi::Error::New(callback.Env(), "Callback must be a function");
-
     Napi::Env env = callback.Env();
 
-    receiver = Napi::Persistent(static_cast<Napi::Value>(Napi::Object::New(env)));
-    tsfn = tsfn_t::New(env, std::move(callback), "Callback callback", 0, 1, &receiver);
+    if (!callback.IsFunction())
+        throw Napi::Error::New(env, "Callback must be a function");
+
+    tsfn = tsfn_t::New(env, std::move(callback), "Callback callback", 0, 1);
 }
 
 Callback::~Callback() { tsfn.Abort(); }
@@ -24,8 +23,7 @@ void Callback::call(arg_func_t argFunc) {
     }
 }
 
-void Callback::Func(Napi::Env env, Napi::Function callback, Napi::Reference<Napi::Value> *context,
-                    Data *data) {
+void Callback::Func(Napi::Env env, Napi::Function callback, Context *context, Data *data) {
     if (!data)
         return;
 
@@ -40,5 +38,5 @@ void Callback::Func(Napi::Env env, Napi::Function callback, Napi::Reference<Napi
     }
 
     if (env && callback)
-        callback.Call(context->Value(), args);
+        callback.Call(args);
 }
