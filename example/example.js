@@ -17,6 +17,7 @@ async function main() {
     };
 
     const mapping = nodePortMapping.createMapping(spec, (info) => {
+        console.log(`Mapping state: ${info.state}`);
         if (info.state == 'Success') {
             console.log(`${info.externalHost}:${info.externalPort}`);
         }
