@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13)
-project(node_portmapping VERSION 0.3.3)
+project(node_portmapping VERSION 0.3.4)
 
 include_directories(${CMAKE_JS_INC})
 
